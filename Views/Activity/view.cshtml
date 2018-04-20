@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3><a href="/logout">Logout</a></h3>
+    <h3><a href="/home">Home</a></h3>
+    <h1>@ViewBag.activity.Title</h1>
+    @if(@ViewBag.activity.UsersId == @ViewBag.active.UserId){
+        <a href="/deleteactivity/@ViewBag.activity.ActivityId"><button class="btn btn-danger">Delete</button></a>
+    }
+    else{
+        bool check =  false;
+        @foreach(var each in @ViewBag.activity.Joined){
+            @if(each.UsersId == @ViewBag.active.UserId){
+                <a href="/leave/@ViewBag.activity.ActivityId"><button class="btn btn-caution">Leave</button></a>
+                check = true;
+            }
+        }
+        @if(check == false){
+            <a href="/join/@ViewBag.activity.ActivityId"><button class="btn btn-primary">Join</button></a>
+        }
+    }
+    <h1>Event Coordinator: @ViewBag.activity.user.FirstName</h1>
+    <h2>Description:</h2>
+    <div style="margin-left: 20px;">
+        <p>@ViewBag.activity.Description</p>
+    </div>
+    <h2>Participants:</h2>
+    <div style="margin-left: 20px;">
+        @foreach(var each in @ViewBag.joined){
+            @if(@each.user.UserId == @ViewBag.active.UserId){
+                continue;
+            }
+            <h3>@each.user.FirstName</h3>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <form action="/login" method="post">
+			<h1>Login</h1>
+			<table>
+				<tbody>
+					<tr>
+						<td class="text-danger" colspan="2">@ViewBag.error</td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input class="form-control" type="text" name="email"></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input class="form-control" type="password" name="password"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input class="btn btn-primary" type="submit" name="submit" style="float: right;"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<div>
+		@model Belt.Models.UserViewModel
+		<form asp-controller="Login" asp-action="process" method="POST">
+			<h1>Register</h1>
+			<table>
+				<tbody>
+					<tr>
+						<td><label asp-for="FirstName"></label></td>
+						<td><input class="form-control" asp-for="FirstName"></td>
+						<td><span class="text-danger" asp-validation-for="FirstName"></span></td>
+					</tr>
+					<tr>
+						<td><label asp-for="LastName"></label></td>
+						<td><input class="form-control" asp-for="LastName"></td>
+						<td><span class="text-danger" asp-validation-for="LastName"></span></td>
+					</tr>
+					<tr>
+						<td><label asp-for="Email"></label></td>
+						<td><input class="form-control" asp-for="Email"></td>
+						<td><span class="text-danger" asp-validation-for="Email"></span></td>
+					</tr>
+					<tr>
+						<td><label asp-for="Password"></label></td>
+						<td><input class="form-control" asp-for="Password" type="password"></td>
+						<td><span class="text-danger" asp-validation-for="Password"></span></td>
+					</tr>
+					<tr>
+						<td><label asp-for="Confirm"></label></td>
+						<td><input class="form-control" asp-for="Confirm" type="password"></td>
+						<td><span class="text-danger" asp-validation-for="Confirm"></span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input class="btn btn-primary" type="submit" name="submit" style="float: right;"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

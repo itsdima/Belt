@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3><a href="logout">Logout</a></h3>
+    <h3><a href="/home">Home</a></h3>
+    <h1>Dojo Activity Center</h1>
+    <br>
+    <h3>Create an Activity!</h3>
+    @model Belt.Models.ActivityViewModel
+    <form asp-controller="Activity" asp-action="addactivity" method="POST">
+        <table>
+            <tbody>
+                <tr>
+                    <td><label asp-for="Title"></label></td>
+                    <td><input class="form-control" asp-for="Title"></td>
+                    <td><span class="text-danger" asp-validation-for="Title"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Date"></label></td>
+                    <td><input type="date" class="form-control" asp-for="Date"></td>
+                    <td><span class="text-danger" asp-validation-for="Date">@ViewBag.dateErr</span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Time"></label></td>
+                    <td><input type="time" step="2" class="form-control" asp-for="Time" placeholder="HH:MM:SS"></td>
+                    <td><span class="text-danger" asp-validation-for="Time"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Duration"></label></td>
+                    <td><input class="form-control" asp-for="Duration" placeholder="HH:MM:SS"></td>
+                    <td><span class="text-danger" asp-validation-for="Duration"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Description"></label></td>
+                    <td><textarea class="form-control" asp-for="Description"></textarea></td>
+                    <td><span class="text-danger" asp-validation-for="Description"></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input value="Create Activity" style="float:right;" class="btn btn-primary" type="submit"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
